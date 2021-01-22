@@ -4,6 +4,7 @@ const port = process.env.PORT || 3977;
 const portDb = 27017;
 const {API_VERSION, IP_SERVER, PORT_DB} = require('./config');
 
+mongoose.set("useUnifiedTopology", true);
 mongoose.connect(`mongodb://${IP_SERVER}:${PORT_DB}/mernDb`, 
 {useNewUrlParser: true}, (err,res)=> {
     if(err){
