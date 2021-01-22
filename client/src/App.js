@@ -1,49 +1,31 @@
 import React from "react";
-import {BrowserRouter as Router,Route,Link, Switch} from "react-router-dom";
-
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import routes from "./config/routes";
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import './App.scss';
 
 function App() {
   return (
-    <Router>
-      <div className="app">
-        <h1>Sistema de rutas base</h1>
-
-        <Link to="/"> Home </Link>
-        <br />
-        <Link to="/contact"> Contacts </Link> 
-        <br />
-        <Link to="/users"> Users </Link>
-        <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/contact"  component={Contact}/>
-          <Route exact path="/users"  component={Users}/>
-          <Route component={Error404}/>
-        </Switch>
-       
-
-
-      </div>
-    </Router>
+   <Router>
+     <Switch>
+        {routes.map((route,index) => (
+          <RouteWithSubRoutes key={index} {...route}/>
+        ))}
+     </Switch>
+   </Router>
     
   );
 }
 
-
-function Home(){
-  return <h2>Estamos en el componente home</h2>;
-}
-
-function Contact(){
-  return <h2>Estamos en el componente contact</h2>;
-}
-
-function Users(){
-  return <h2>Estamos en el componente users</h2>;
-}
-
-function Error404(){
-  return <h2>Error 404......</h2>;
+function RouteWithSubRoutes(route){
+  console.log(route);
+  return (
+    <Route
+    path={route.path}  
+    exact={route.exact}
+    render={props => <route.component routes={route.routes} {...props} />}
+    />
+  );
 }
 
 export default App;
