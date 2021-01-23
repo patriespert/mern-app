@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Home(){
+export default function Error404(){
     return(
         <div>
-             <h1>Estamos en home</h1>
+             <h1>Error 404...</h1>
         </div>
        
     );

@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { Layout } from "antd";
 
 import "./LayoutAdmin.scss";
@@ -16,7 +16,7 @@ export default function LayoutAdmin(props){
             <Layout>
                 <Header> Header.. </Header>
                 <Content>
-                    <LoadRouters routes={routes} />
+                    <LoadRoutes routes={routes} />
                 </Content>
                 <Footer>
                     Patricia Martínez Espert 2021
@@ -26,14 +26,19 @@ export default function LayoutAdmin(props){
     );
 }
 
-function LoadRouters({ routes }) {
+function LoadRoutes({ routes }) {
     console.log(routes)
-    return routes.map((route,index) => (
-        <Route 
-            key={index}
-            path={route.path}
-            exzct={route.exact}
-            component={route.component}
-        />
-    ));
+    return(
+        <Switch>
+            {routes.map((route,index) => (
+
+                <Route
+                    key={index}
+                    path={route.path}
+                    exact={route.exact}
+                    component={route.component}
+                />
+            ))}
+        </Switch>
+    );
 }
