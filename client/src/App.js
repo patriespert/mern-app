@@ -2,7 +2,6 @@ import React from "react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import routes from "./config/routes";
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
-import './App.scss';
 
 function App() {
   return (

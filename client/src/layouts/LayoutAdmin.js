@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { Layout } from "antd";
+import MenuTop from "../components/Admin/MenuTop";
 
 import "./LayoutAdmin.scss";
 
@@ -11,18 +12,17 @@ export default function LayoutAdmin(props){
 
 
     return(
-        <Layout>
-            <h2>Menu Sider Admin</h2>
-            <Layout>
-                <Header> Header.. </Header>
-                <Content>
+        
+            <Layout className="layout-admin">
+                <Header className="layout-admin__header"> 
+                    <MenuTop />
+                </Header>
+                <Content className="layout-admin__content">
                     <LoadRoutes routes={routes} />
                 </Content>
-                <Footer>
-                    Patricia Martínez Espert 2021
-                </Footer>
+                <Footer className="layout-admin__footer"> Patricia Martínez Espert 2021 </Footer>
             </Layout>
-        </Layout>
+        
     );
 }
 
