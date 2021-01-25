@@ -1,5 +1,6 @@
 import React from "react";
-import { Layout, Button } from "antd";
+import { Link } from "react-router-dom";
+import { Button } from "antd";
 import SVGLogo from "../../../assets/img/svg/lemon.svg";
 import { MenuUnfoldOutlined, MenuFoldOutlined, PoweroffOutlined  } from '@ant-design/icons';
 
@@ -10,11 +11,13 @@ export default function MenuTop(props){
     return (
         <div className="menu-top">
             <div className="menu-top__left">
-                <img
-                    className="menu-top__left-logo"
-                    src={SVGLogo}
-                    alt="logo"
-                />
+                <Link to={"/admin"}>
+                    <img
+                        className="menu-top__left-logo"
+                        src={SVGLogo}
+                        alt="logo"
+                    />
+                </Link>
                 <Button type="link" onClick={() => setMenuCollapsed(!menuCollapsed) } > 
                     {React.createElement(menuCollapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
                 </Button>               
