@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Route, Switch } from "react-router-dom";
 import { Layout } from "antd";
 import MenuTop from "../components/Admin/MenuTop";
@@ -8,22 +8,27 @@ import "./LayoutAdmin.scss";
 
 export default function LayoutAdmin(props){
     const { routes } = props;
+    const [menuCollapsed, setMenuCollapsed] = useState(false);
     const {Header, Content, Footer} = Layout;
     console.log(props);
 
 
     return(
         
-            <Layout className="layout-admin">
-                <MenuSider />
+        <Layout>
+            <MenuSider menuCollapsed={menuCollapsed} />
+            <Layout className="layout-admin" style={{marginLeft: menuCollapsed ? "0px" : "20px" }}>
                 <Header className="layout-admin__header"> 
-                    <MenuTop />
+                    <MenuTop menuCollapsed={menuCollapsed} 
+                    setMenuCollapsed={setMenuCollapsed} />
                 </Header>
                 <Content className="layout-admin__content">
                     <LoadRoutes routes={routes} />
                 </Content>
-                <Footer className="layout-admin__footer"> Patricia Martínez Espert 2021 </Footer>
+                <Footer className="layout-admin__footer"> PATRICIA MARTÍNEZ ESPERT 2021 </Footer>
             </Layout>
+        </Layout>
+            
         
     );
 }
